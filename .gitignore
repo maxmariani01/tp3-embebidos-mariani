@@ -1,0 +1,31 @@
+# Artefactos de compilación
+*.elf
+*.bin
+*.hex
+*.map
+*.o
+*.d
+*.a
+*.lst
+
+# Carpetas de build
+build/
+obj/
+bin/
+!evidencia/build/
+!evidencia/build/*.log
+
+# Archivos temporales del editor
+*~
+*.swp
+.vscode/
+.idea/
+*.bak
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs personales (si los generaste durante pruebas)
+*.log
+!evidencia/**/*.log

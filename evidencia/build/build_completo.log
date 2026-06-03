@@ -1,0 +1,8 @@
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -Wall -Wextra -g -O0 -ffunction-sections -fdata-sections -MMD -MP                        -DSTM32F1                       -I../../bluepill-libopencm3/libopencm3/include -I../../bluepill-libopencm3/common -Isrc -c -o ../bin/main.o src/main.c
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -Wall -Wextra -g -O0 -ffunction-sections -fdata-sections -MMD -MP                        -DSTM32F1                       -I../../bluepill-libopencm3/libopencm3/include -I../../bluepill-libopencm3/common -Isrc -c -o ../bin/lcd_i2c.o src/lcd_i2c.c
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T../../bluepill-libopencm3/common/linker.ld -nostartfiles -Wl,--gc-sections -Wl,-Map=../bin/firmware.map --specs=nano.specs --specs=nosys.specs -o ../bin/firmware.elf ../bin/main.o ../bin/lcd_i2c.o -L../../bluepill-libopencm3/libopencm3/lib -lopencm3_stm32f1 -lc -lgcc -lnosys
+arm-none-eabi-objcopy -O binary ../bin/firmware.elf ../bin/firmware.bin
+arm-none-eabi-objcopy -O ihex ../bin/firmware.elf ../bin/firmware.hex
+arm-none-eabi-size ../bin/firmware.elf
+   text	   data	    bss	    dec	    hex	filename
+   9561	     96	     28	   9685	   25d5	../bin/firmware.elf
